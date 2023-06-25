@@ -1,0 +1,9 @@
+name: hoi
+version: '${project.version}'
+main: me.arch.hoi.Hoi
+api-version: '1.20'
+commands:
+  create:
+    description: Gives wand of fire! of the 5 wizards!
+    aliases: c
+    usage: /create
