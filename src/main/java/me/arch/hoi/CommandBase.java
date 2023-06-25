@@ -8,6 +8,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.SimplePluginManager;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.Command;
+import org.bukkit.ChatColor;
+import org.bukkit.event.EventHandler;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
