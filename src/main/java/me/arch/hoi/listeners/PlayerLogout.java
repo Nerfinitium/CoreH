@@ -10,7 +10,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-import static me.arch.hoi.Hoi.*;
+import static me.arch.hoi.Hoi.debugmode;
+import static me.arch.hoi.Hoi.password;
+import static me.arch.hoi.Hoi.url;
+import static me.arch.hoi.Hoi.user;
+
 
 public class PlayerLogout implements Listener {
 
