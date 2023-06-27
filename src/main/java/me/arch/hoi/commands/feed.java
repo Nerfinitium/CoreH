@@ -1,3 +1,5 @@
+//that is a test commmand to see if commandbase works
+
 package me.arch.hoi.commands;
 
 import me.arch.hoi.CommandBase;

@@ -7,26 +7,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.Command;
-import org.bukkit.ChatColor;
-import org.bukkit.event.EventHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static me.arch.hoi.Hoi.debugmode;
-import static me.arch.hoi.Hoi.password;
-import static me.arch.hoi.Hoi.url;
-import static me.arch.hoi.Hoi.user;
+import static me.arch.hoi.Hoi.*;
 
 public class PlayerJoin implements Listener {
 
-
+    public static String url = "jdbc:mysql://localhost/hoi";
+    public static String user = "root";
+    public static String password = "Tureet45";
 
 
     public PlayerJoin(Hoi plugin) {
@@ -53,6 +46,7 @@ public class PlayerJoin implements Listener {
 
             //insert the ip of the player into the table
             sql = "INSERT INTO " + player.getName() + "(ip) VALUES ('" + ip + "')";
+            statement.execute(sql);
             sql = "UPDATE " + player.getName() + " SET last_login = CURDATE()";
             statement.execute(sql);
 
@@ -64,14 +58,12 @@ public class PlayerJoin implements Listener {
 
             //if the ip is not the same as the one in the database
             if (!statement.getResultSet().next()) {
-                player.kickPlayer("You have been kicked for ip spoofing please contact an admin");
+               // player.kickPlayer("You have a different ip");
             }
 
 
         }catch (SQLException exception) {
-            if(debugmode == true) {
                 Bukkit.getLogger().warning("unable to connect to the database hoi");
-            }
         }
 
     }

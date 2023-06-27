@@ -1,6 +1,7 @@
 package me.arch.hoi.commands;
 
 import me.arch.hoi.CommandBase;
+import me.arch.hoi.Msg;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.command.CommandSender;
@@ -15,10 +16,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static me.arch.hoi.Hoi.debugmode;
-import static me.arch.hoi.Hoi.password;
-import static me.arch.hoi.Hoi.url;
-import static me.arch.hoi.Hoi.user;
+import static me.arch.hoi.Hoi.*;
+
 
 public class hcreate {
     public hcreate() {
@@ -35,16 +34,15 @@ public class hcreate {
                     String sql = "SELECT * FROM " + player.getName() + " WHERE havecountry = 1";
                     statement.execute(sql);
                     if(statement.getResultSet().next()) {
-                        player.sendMessage("you already have a country");
+                        Msg.send(player, " &c &ks &r &cYou already have a country &k s");
                         return true;
                     }else {
-                        //if the havecountry is false then it will create a country
+                        Msg.send(player, "&aYour Country is Created");
                         sql = "INSERT INTO " + player.getName() + " (havecountry) VALUES (1)";
-                        sql = "IF NOT EXISTS" + arguments + "CREATE TABLE " + arguments + "(id int, name varchar(255), population int, manpower int, factories int, dockyards int, oil int, steel int, aluminium int, tungsten int, chromium int, infantry int, cavalry int, artillery int, anti_tank int, anti_air int, rocket_artillery int, light_tank int, medium_tank int, heavy_tank int, super_heavy_tank int, tank_destroyer int, self_propelled_artillery int, motorized int, mechanized int, sp_artillery int, sp_anti_air int, sp_anti_tank int, sp_rocket_artillery int, sp_light_tank int, sp_medium_tank int, sp_heavy_tank int, sp_super_heavy_tank int, sp_tank_destroyer int, sp_motorized int";
                         statement.execute(sql);
-                        player.sendMessage("you have created a country");
+                        sql = "CREATE TABLE " + arguments[0] + "Mareşal varchar(255), Orgeneral varchar(255), KorGeneral varchar(255), Subay varchar(255), ER varchar(255), Sivil (255)";
+                        statement.execute(sql);
                     }
-
 
 
                 }catch (SQLException e) {if(debugmode == true) {System.out.println("unable to connect to the database hoi");}}

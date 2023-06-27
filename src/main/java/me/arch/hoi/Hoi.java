@@ -4,6 +4,7 @@ package me.arch.hoi;
 import me.arch.hoi.commands.create;
 import me.arch.hoi.commands.feed;
 import me.arch.hoi.commands.hcreate;
+import me.arch.hoi.listeners.ChunkLoad;
 import me.arch.hoi.listeners.PlayerJoin;
 import me.arch.hoi.util.ConfigUtil;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,6 +14,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,6 +36,7 @@ public final class Hoi extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
         saveDefaultConfig();
         List<String> kitItems = (List<String>) getConfig().getList("kit");
         for (String itemName : kitItems) {
@@ -65,6 +68,9 @@ public final class Hoi extends JavaPlugin {
         new feed();
         new hcreate();
         new PlayerJoin(this);
+        new ChunkLoad(this);
+
+
     }
     @Override
     public void onDisable() { System.out.println("shutting down...");}
