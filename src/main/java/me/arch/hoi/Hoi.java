@@ -1,19 +1,12 @@
 package me.arch.hoi;
 
 
-import me.arch.hoi.commands.create;
 import me.arch.hoi.commands.feed;
-import me.arch.hoi.commands.hcreate;
+import me.arch.hoi.commands.HCreate;
 import me.arch.hoi.listeners.ChunkLoad;
 import me.arch.hoi.listeners.PlayerJoin;
 import me.arch.hoi.util.ConfigUtil;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.Command;
-import org.bukkit.ChatColor;
-import org.bukkit.event.EventHandler;
 
 
 import java.sql.Connection;
@@ -64,9 +57,8 @@ public final class Hoi extends JavaPlugin {
 
         // Plugin startup logic
         getLogger().info("plugin started");
-        getCommand("create").setExecutor(new create());
         new feed();
-        new hcreate();
+        new HCreate();
         new PlayerJoin(this);
         new ChunkLoad(this);
 
