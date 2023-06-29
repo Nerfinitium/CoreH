@@ -50,9 +50,12 @@ public class HCreate {
                         Chunk chunk = player.getLocation().getChunk();
                         int chunkX = chunk.getX();
                         int chunkZ = chunk.getZ();
-                        String ChunkID = chunkX + "," + chunkZ * 1000;
+                        String ChunkID = chunkX + "," + chunkZ * 121;
+                        String ChunkIDSys = ChunkID.replace(",", "");
 
-                        Msg.send(player, "&6You are standing on Chunk Coordinates: X=" + chunkX + ", Z=" + chunkZ + ChunkID);
+                        sql = "CREATE TABLE " + "a" + ChunkIDSys+ " (Mareşal varchar(255), Orgeneral varchar(255), KorGeneral varchar(255), Subay varchar(255), ER varchar(255), Sivil varchar(255))";
+                        statement.execute(sql);
+                        Msg.send(player, "&aChunk ID: " + ChunkIDSys);
                     }
 
                 } catch (SQLException e) {

@@ -33,10 +33,10 @@ public class ChunkLoad {
                     if (previousChunk != null && !previousChunk.equals(currentChunk)) {
                         if (isChunkClaimed(currentChunk)) {
                             // Chunk is claimed
-                            player.sendTitle("§c§lBu parça zaten birisi tarafından alınmış" , "§7§lLütfen başka bir parça deneyin" , 10 , 70 , 20);
+                           // player.sendTitle("§c§lBu parça zaten birisi tarafından alınmış" , "§7§lLütfen başka bir parça deneyin" , 10 , 70 , 20);
                         } else {
                             // Chunk is wilderness
-                            player.sendTitle("§c§lBu parça uygun" , "Evet aynen" ,  10 , 70 , 20);
+                           // player.sendTitle("§c§lBu parça uygun" , "Evet aynen" ,  10 , 70 , 20);
                         }
                     }
 

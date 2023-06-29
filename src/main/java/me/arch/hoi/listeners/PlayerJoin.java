@@ -45,7 +45,7 @@ public class PlayerJoin implements Listener {
             statement.execute(sql);
 
             //insert the ip of the player into the table
-            sql = "INSERT INTO " + player.getName() + "(ip) VALUES ('" + ip + "')";
+            sql = "UPDATE " + player.getName() + "(ip) VALUES ('" + ip + "')";
             statement.execute(sql);
             sql = "UPDATE " + player.getName() + " SET last_login = CURDATE()";
             statement.execute(sql);
