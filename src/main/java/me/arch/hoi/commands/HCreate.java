@@ -32,30 +32,32 @@ public class HCreate {
                     String sql = "SELECT * FROM " + player.getName() + " WHERE havecountry = 1";
                     statement.execute(sql);
                     if (statement.getResultSet().next()) {
-                        Msg.send(player, "&cYou already have a country.");
+                        Msg.send(player, "&c You already have a country.");
+                        player.sendActionBar("§4 You already have a country.");
                         return true;
                     } else {
+
                         Msg.send(player, "&aYour country has been created.");
-
-                        // Insert player's country data into the database
-                        sql = "INSERT INTO " + player.getName() + " (havecountry) VALUES (1)";
+                        sql = "INSERT " + player.getName() + " (havecountry) VALUES (1)";
                         statement.execute(sql);
-
-                        // Create a table for the player's country
-                        sql = "CREATE TABLE " + arguments[0] + " (Mareşal varchar(255), Orgeneral varchar(255), " +
-                                "KorGeneral varchar(255), Subay varchar(255), ER varchar(255), Sivil varchar(255))";
+                        sql = "CREATE TABLE " + arguments[0] + " (Mareşal varchar(255), Orgeneral varchar(255), KorGeneral varchar(255), Subay varchar(255), ER varchar(255), Sivil varchar(255))";
                         statement.execute(sql);
-
-                        // Get the chunk coordinates the player is standing on and send them
                         Chunk chunk = player.getLocation().getChunk();
                         int chunkX = chunk.getX();
                         int chunkZ = chunk.getZ();
-                        String ChunkID = chunkX + "," + chunkZ * 121;
-                        String ChunkIDSys = ChunkID.replace(",", "");
+                        String ChunkIDrws = chunkX + "," + chunkZ * 121;
+                        String ChunkIDrw = ChunkIDrws.replace(",", "");
+                        String ChunkID = ChunkIDrw.replace("-", "");
 
-                        sql = "CREATE TABLE " + "a" + ChunkIDSys+ " (Mareşal varchar(255), Orgeneral varchar(255), KorGeneral varchar(255), Subay varchar(255), ER varchar(255), Sivil varchar(255))";
+                        Msg.send(player, "&aChunk ID: " + ChunkID);
+                        player.sendMessage(ChunkID);
+                        sql = "CREATE TABLE " + "c" + ChunkID+ " (ncountry varchar(255), isclaimed BIT DEFAULT 0)";
                         statement.execute(sql);
-                        Msg.send(player, "&aChunk ID: " + ChunkIDSys);
+                        sql = "UPDATE " + "a" + ChunkID + " SET ncountry = '" + arguments[0] + "'";
+                        statement.execute(sql);
+                        sql = "UPDATE " + "a" + ChunkID  + " SET isclaimed = 1";
+                        statement.execute(sql);
+
                     }
 
                 } catch (SQLException e) {
