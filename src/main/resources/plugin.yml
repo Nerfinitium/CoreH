@@ -1,9 +1,14 @@
 name: hoi
-version: '${project.version}'
+version: '1.1'
 main: me.arch.hoi.Hoi
 api-version: '1.20'
 commands:
-  create:
-    description: Gives wand of fire! of the 5 wizards!
-    aliases: c
-    usage: /create
+  hcreate:
+    description: Creates A new Country
+    aliases: hc
+    usage: /hcreate
+  hclaim:
+    description: Claims a chunk for your country
+    aliases: hcl
+    usage: /hclaim
+

@@ -1,6 +1,7 @@
 package me.arch.hoi;
 
 
+import me.arch.hoi.commands.HClaim;
 import me.arch.hoi.commands.feed;
 import me.arch.hoi.commands.HCreate;
 import me.arch.hoi.listeners.ChunkLoad;
@@ -61,6 +62,7 @@ public final class Hoi extends JavaPlugin {
         new HCreate();
         new PlayerJoin(this);
         new ChunkLoad(this);
+        new HClaim();
 
 
     }
