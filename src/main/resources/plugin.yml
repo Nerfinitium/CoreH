@@ -2,13 +2,4 @@ name: hoi
 version: '1.1'
 main: me.arch.hoi.Hoi
 api-version: '1.20'
-commands:
-  hcreate:
-    description: Creates A new Country
-    aliases: hc
-    usage: /hcreate
-  hclaim:
-    description: Claims a chunk for your country
-    aliases: hcl
-    usage: /hclaim
 
