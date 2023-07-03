@@ -68,23 +68,22 @@ public class HClaim {
     }
 
     private void createChunkTable(Connection connection, String chunkID, String countryName) throws SQLException {
-        String sql = "CREATE TABLE IF NOT EXISTS " + "c" + chunkID + " (ncountry varchar(255), isclaimed BIT DEFAULT 0)";
+        String sql = "CREATE TABLE IF NOT EXISTS c" + chunkID + " (country varchar(255), isclaimed BIT DEFAULT 0)";
         try (Statement statement = connection.createStatement()) {
             statement.execute(sql);
-            sql = "UPDATE " + "c" + chunkID + " SET ncountry = '" + countryName + "'";
-            statement.executeUpdate(sql);
+            sql = "INSERT INTO c" + chunkID + " (country) VALUES ('" + countryName + "')";
+            statement.execute(sql);
         }
     }
 
     private String getPlayerCountryName(Player player) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            String tableName = player.getName();
-            String sql = "SELECT country FROM " + tableName + " WHERE country IS NOT NULL LIMIT 1";
+            String sql = "SELECT country FROM " + player.getName()+ " WHERE country IS NOT NULL LIMIT 1";
 
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
                 if (resultSet.next()) {
-                    return resultSet.getString("country");
+                    return resultSet.getString("countryNamed");
                 }
             }
         } catch (SQLException e) {

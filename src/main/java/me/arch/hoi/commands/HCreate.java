@@ -38,8 +38,6 @@ public class HCreate {
                     } else {
 
                         Msg.send(player, "&aYour country has been created.");
-                        sql = "INSERT " + player.getName() + " (havecountry) VALUES (1)";
-                        statement.execute(sql);
                         sql = "CREATE TABLE " + arguments[0] + " (Mareşal varchar(255), Orgeneral varchar(255), KorGeneral varchar(255), Subay varchar(255), ER varchar(255), Sivil varchar(255))";
                         statement.execute(sql);
                         Chunk chunk = player.getLocation().getChunk();
@@ -51,14 +49,18 @@ public class HCreate {
 
                         Msg.send(player, "&aChunk ID: " + ChunkID);
                         player.sendMessage(ChunkID);
-                        sql = "CREATE TABLE " + "c" + ChunkID+ " (ncountry varchar(255), isclaimed BIT DEFAULT 0)";
+                        sql = "CREATE TABLE " + "c" + ChunkID+ " (country varchar(255), isclaimed BIT DEFAULT 0)";
                         statement.execute(sql);
-                        sql = "UPDATE " + "a" + ChunkID + " SET ncountry = '" + arguments[0] + "'";
+                        sql = "INSERT INTO " + "c" + ChunkID+ " SET isclaimed = 1";
                         statement.execute(sql);
-                        sql = "UPDATE " + "a" + ChunkID  + " SET isclaimed = 1";
+                        sql = "INSERT INTO " + player.getName() + " SET havecountry = 1";
                         statement.execute(sql);
-                        sql = "UPDATE " + player.getName() + " SET country = '" + arguments[0] + "'";
+                        sql = "INSERT INTO " + player.getName() + " (country) VALUES ('" + arguments[0] + "')";
                         statement.execute(sql);
+                        sql = "INSERT INTO " + "c" + ChunkID + " (country) VALUES ('" + arguments[0] + "')";
+                        statement.execute(sql);
+
+
 
 
                     }
