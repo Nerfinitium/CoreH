@@ -83,7 +83,7 @@ public class HClaim {
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
                 if (resultSet.next()) {
-                    return resultSet.getString("countryNamed");
+                    return resultSet.getString("countryName");
                 }
             }
         } catch (SQLException e) {
