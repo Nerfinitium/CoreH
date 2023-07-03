@@ -29,7 +29,7 @@ public class HCreate {
                     Statement statement = connection.createStatement();
 
                     // Check if the player already has a country
-                    String sql = "SELECT * FROM " + player.getName() + " WHERE havecountry = 1";
+                    String sql = "SELECT * FROM " + player.getName() + " WHERE havecountry = 1 LIMIT 1";
                     statement.execute(sql);
                     if (statement.getResultSet().next()) {
                         Msg.send(player, "&c You already have a country.");
@@ -57,6 +57,9 @@ public class HCreate {
                         statement.execute(sql);
                         sql = "UPDATE " + "a" + ChunkID  + " SET isclaimed = 1";
                         statement.execute(sql);
+                        sql = "UPDATE " + player.getName() + " SET country = '" + arguments[0] + "'";
+                        statement.execute(sql);
+
 
                     }
 
