@@ -6,11 +6,7 @@ import org.bukkit.Chunk;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import static me.arch.hoi.Hoi.*;
 import static me.arch.hoi.Hoi.debugmode;
@@ -68,11 +64,14 @@ public class HClaim {
     }
 
     private void createChunkTable(Connection connection, String chunkID, String countryName) throws SQLException {
-        String sql = "CREATE TABLE IF NOT EXISTS c" + chunkID + " (country varchar(255), isclaimed BIT DEFAULT 0)";
-        try (Statement statement = connection.createStatement()) {
-            statement.execute(sql);
-            sql = "INSERT INTO c" + chunkID + " (country) VALUES ('" + countryName + "')";
-            statement.execute(sql);
+        String createTableSql = "CREATE TABLE IF NOT EXISTS c" + chunkID + " (country varchar(255), isclaimed BIT DEFAULT 0)";
+        String insertDataSql = "INSERT INTO c" + chunkID + " (country) VALUES (?)";
+
+        try (Statement createTableStatement = connection.createStatement();
+             PreparedStatement insertDataStatement = connection.prepareStatement(insertDataSql)) {
+            createTableStatement.execute(createTableSql);
+            insertDataStatement.setString(1, countryName);
+            insertDataStatement.execute();
         }
     }
 
