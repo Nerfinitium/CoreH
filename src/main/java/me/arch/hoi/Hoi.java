@@ -8,6 +8,7 @@ import me.arch.hoi.listeners.ChunkLoad;
 import me.arch.hoi.listeners.PlayerJoin;
 import me.arch.hoi.util.ConfigUtil;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 
 import java.sql.Connection;
