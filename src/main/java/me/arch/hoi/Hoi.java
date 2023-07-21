@@ -59,7 +59,6 @@ public final class Hoi extends JavaPlugin {
 
         // Plugin startup logic
         getLogger().info("plugin started");
-        new feed();
         new HCreate();
         new PlayerJoin(this);
         new ChunkLoad(this);
