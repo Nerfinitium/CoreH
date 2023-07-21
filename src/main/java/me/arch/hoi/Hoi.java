@@ -44,6 +44,8 @@ public final class Hoi extends JavaPlugin {
             Statement statement = connection.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS player_stats(xp int, kills int, blocks_broken long, balance double, last_login DATE, last_logout DATE)";
             statement.execute(sql);
+            sql = "CREATE TABLE IF NOT EXISTS chunk_data (chunkid varchar(255), cname varchar(255), isc BIT DEFAULT 0)";
+            statement.execute(sql);
         }catch (SQLException e) {
             System.out.println("unable to connect to the database hoi");
         }

@@ -44,19 +44,7 @@ public class PlayerJoin implements Listener {
             String sql = "CREATE TABLE IF NOT EXISTS " + player.getName() + "(ip varchar(255), last_login DATE, last_logout DATE, command_power int, havecountry BIT DEFAULT 0, country varchar(255), kills int, wounds int)";
             statement.execute(sql);
 
-            //insert the ip of the player into the table
-            sql = "INSERT INTO " + player.getName() + "(ip) VALUES ('" + ip + "')";
-            statement.execute(sql);
-            sql = "INSERT INTO " + player.getName() + " SET last_login = CURDATE()";
-            statement.execute(sql);
 
-            //check if the ip of the player is the same as the one in the database
-            sql = "SELECT * FROM " + player.getName() + " WHERE ip = '" + ip + "'";
-            statement.execute(sql);
-
-
-
-            //if the ip is not the same as the one in the database
             if (!statement.getResultSet().next()) {
                // player.kickPlayer("You have a different ip");
             }

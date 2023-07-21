@@ -56,7 +56,7 @@ public class HClaim {
     }
 
     private boolean isChunkClaimed(Connection connection, String chunkID) throws SQLException {
-        String sql = "SHOW TABLES LIKE 'c" + chunkID + "'";
+        String sql = "SHOW  TABLES LIKE 'c" + chunkID + "'";
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             return resultSet.next();
