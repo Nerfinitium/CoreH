@@ -14,6 +14,7 @@ Core History
 
 ## Dynmap Army GUI
 
-## CoreH Website Army Management
+# THIS PROJECT IS DEPRECATED 
+im too bored to make this continue
 
 
