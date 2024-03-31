@@ -21,7 +21,7 @@ public final class Hoi extends JavaPlugin {
 
     public static String url = "jdbc:mysql://localhost/hoi";
     public static String user = "root";
-    public static String password = "Tureet45";
+    public static String password = "password";
     public static boolean debugmode = true; //added a debugmode for only in development proccess going to be transfered to config.yml later
 
     String configFilePath = "configs/config.properties";
